@@ -1,24 +1,90 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BalanceSheetWrapper,
+  Date,
+  Subtitle,
+  Table,
+  TableCell,
+  TableDiv,
+  TableHeader,
+  TableRow,
+  Title,
+} from "./components/styles/Body.styles";
+import {
+  CurrentAssets,
+  CurrentLiabalities,
+  FixedAssets,
+  Investments,
+} from "./data/data";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BalanceSheetWrapper>
+      <Title>Company Name</Title>
+      <Subtitle>Balance Sheet</Subtitle>
+      <Date>As of ________ (Date)</Date>
+      <TableDiv>
+        <div>
+          <Table>
+            <thead>
+              <tr>
+                <TableHeader>Particular</TableHeader>
+                <TableHeader>$$</TableHeader>
+              </tr>
+            </thead>
+            <tbody>
+              <TableCell>
+                <b>Current Assets</b>
+              </TableCell>
+              {CurrentAssets.map((item, index) => (
+                <TableRow key={index}>
+                  <TableCell>{item.Particular}</TableCell>
+                  <TableCell>{item.$$}</TableCell>
+                </TableRow>
+              ))}
+              <TableCell>
+                <b>Fixed Assets</b>
+              </TableCell>
+              {FixedAssets.map((item, index) => (
+                <TableRow key={index}>
+                  <TableCell>{item.Particular}</TableCell>
+                  <TableCell>{item.$$}</TableCell>
+                </TableRow>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+        <div>
+          <Table>
+            <thead>
+              <tr>
+                <TableHeader>Particular</TableHeader>
+                <TableHeader>$$</TableHeader>
+              </tr>
+            </thead>
+            <tbody>
+              <TableCell>
+                <b>Investments</b>
+              </TableCell>
+              {Investments.map((item, index) => (
+                <TableRow key={index}>
+                  <TableCell>{item.Particular}</TableCell>
+                  <TableCell>{item.$$}</TableCell>
+                </TableRow>
+              ))}
+              <TableCell>
+                <b>CurrentLiabalities</b>
+              </TableCell>
+              {CurrentLiabalities.map((item, index) => (
+                <TableRow key={index}>
+                  <TableCell>{item.Particular}</TableCell>
+                  <TableCell>{item.$$}</TableCell>
+                </TableRow>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+      </TableDiv>
+    </BalanceSheetWrapper>
   );
 }
 
